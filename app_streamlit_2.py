@@ -1,24 +1,5 @@
-import streamlit as st
-from PIL import Image, ImageDraw
+import streamlit as st 
 
-# Function to create a circular image
-def create_circular_image(image):
-    # Create a square image with a transparent background
-    size = (300, 300)  # Desired size
-    circular_image = Image.new("RGBA", size, (255, 255, 255, 0))
-    
-    # Create a mask for the circular area
-    mask = Image.new("L", size, 0)
-    draw = ImageDraw.Draw(mask)
-    draw.ellipse((0, 0, size[0], size[1]), fill=255)
-
-    # Resize the original image and paste it onto the circular mask
-    image = image.resize(size, Image.ANTIALIAS)
-    circular_image.paste(image, (0, 0), mask)
-
-    return circular_image
-
-# Title of the app
 st.markdown(
     """
     <h1 style="text-align: center; background: linear-gradient(to right, purple, black); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Ady's Blog</h1>
@@ -26,7 +7,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Blog post data
 blog_posts = [
     {
         "content": [
@@ -42,8 +22,8 @@ blog_posts = [
     }
 ]
 
-# Display the image from the URL
 for post in blog_posts:
+    # Display the image
     if "image" in post:
         st.markdown(
             f"""
@@ -62,17 +42,3 @@ for post in blog_posts:
         st.write(f"**{item[0]}:** {item[1]}")
     
     st.markdown("---")
-
-# Upload an image
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-
-if uploaded_file is not None:
-    # Open the uploaded image
-    img = Image.open(uploaded_file)
-
-    # Create a circular image from the uploaded image
-    circular_img = create_circular_image(img)
-
-    # Display the original and circular images
-    st.image(img, caption='Original Image', use_column_width=True)
-    st.image(circular_img, caption='Circular Image', use_column_width=True)
