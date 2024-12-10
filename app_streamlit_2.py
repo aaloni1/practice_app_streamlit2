@@ -1,15 +1,16 @@
 import streamlit as st 
+
 st.markdown(
     """
     <h1 style="text-align: center; background: linear-gradient(to right, purple, black); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Ady's Blog</h1>
     """,
     unsafe_allow_html=True
- )
+)
 
 blog_posts = [
     {
         "content": [
-            ("Name", "Adam Rey G. Aloni"),  # Included name in content
+            ("Name", "Adam Rey G. Aloni"),
             ("Age", "19 years old"),
             ("Gender", "Male"),
             ("Birthdate", "October 27, 2005"),
@@ -34,11 +35,10 @@ for post in blog_posts:
         )
     
     # Title for the content section
-    st.subheader("About Me")  # Added title for the content section
+    st.subheader("About Me")
     
     # Display content in a structured format
     for item in post["content"]:
         st.write(f"**{item[0]}:** {item[1]}")
     
     st.markdown("---")
-    
