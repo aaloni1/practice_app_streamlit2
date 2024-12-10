@@ -1,5 +1,6 @@
-import streamlit as st 
+import streamlit as st
 
+# Title of the app
 st.markdown(
     """
     <h1 style="text-align: center; background: linear-gradient(to right, purple, black); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Ady's Blog</h1>
@@ -7,6 +8,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Blog post data
 blog_posts = [
     {
         "content": [
@@ -22,13 +24,13 @@ blog_posts = [
     }
 ]
 
+# Display the image from the URL
 for post in blog_posts:
-    # Display the image
     if "image" in post:
         st.markdown(
             f"""
             <div style="display: flex; justify-content: center;">
-                <img src="{post['image']}" style="width: 350px; height: 350px; object-fit: cover;" />
+                <img src="{post['image']}" style="width: 350px; height: 350px; object-fit: cover; border-radius: 50%;" />
             </div>
             """, 
             unsafe_allow_html=True
