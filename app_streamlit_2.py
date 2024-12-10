@@ -67,10 +67,10 @@ for post in blog_posts:
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    # Open the image
+    # Open the uploaded image
     img = Image.open(uploaded_file)
 
-    # Create a circular image
+    # Create a circular image from the uploaded image
     circular_img = create_circular_image(img)
 
     # Display the original and circular images
